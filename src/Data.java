@@ -21,7 +21,7 @@ public class Data {
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
             // Needs to be filled using getFoodArrayList() and then we append the new item to it.
-            List<Food> foodList = new ArrayList<Food>();
+            List<Food> foodList = getFoodArrayList();
             //foodList.add();
 
             for (Food food : foodList) {
@@ -33,16 +33,18 @@ public class Data {
         }
     }
 
-    public void getFoodArrayList() {
+    public List<Food> getFoodArrayList() {
         String fileName = "MyEmptyFile.txt";
+        List<Food> foodList = new ArrayList<Food>();
         try {
             FileInputStream inputFile = new FileInputStream("FoodStorage.txt");
             ObjectInputStream objectInput = new ObjectInputStream(inputFile);
 
             while (true) {
                 Food food = (Food) objectInput.readObject();
-                System.out.println(food.getName());
-                System.out.println(food.isKetoFriendly());
+                foodList.add(food);
+                // System.out.println(food.getName());
+                // System.out.println(food.isKetoFriendly());
                 System.out.println();
             }
         }
@@ -51,8 +53,10 @@ public class Data {
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
+        return foodList;
     }
 
+    // DEPRECIATED
     // Needs to be re-written so it doesn't overwrite previous item.
     // Currently planning to get array of stored foods & appending
     // the new food to the array, then saving the array to file again.
