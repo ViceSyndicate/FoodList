@@ -1,4 +1,7 @@
 import java.io.*;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,6 +10,28 @@ import java.io.OutputStream;
 
 
 public class Data {
+
+    String fileName = "FoodStorage.txt";
+
+    public void storeFoodArrayList() {
+        OutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            // Needs to be filled using getFoodArrayList() and then we append the new item to it.
+            List<Food> foodList = new ArrayList<Food>();
+            //foodList.add();
+
+            for (Food food : foodList) {
+                objectOutputStream.writeObject(food);
+            }
+        }
+        catch (IOException ex) { // (IOException | ParseException ex)
+            ex.printStackTrace();
+        }
+    }
 
     public void getFoodArrayList() {
         String fileName = "MyEmptyFile.txt";
