@@ -11,11 +11,11 @@ public class Main {
         // And call the Menu function again.
 
         int userChoice = Menu();
-        while (userChoice == 10) {
-            System.out.println("Unexpected Input.");
+        if (userChoice == 10)
+            System.out.println("Unexpected Input. Please try again.\n");
+        else
             userChoice = Menu();
-        }
-        System.out.println("Exiting Program.");
+
     }
 
     public static int Menu() {
@@ -42,10 +42,15 @@ public class Main {
                 System.out.println("Food Menu.");
                 // Call Food Menu Function
                 foodList = data.getFoodArrayList();
+                System.out.println(("-----------------------------------------------------------------------------"));
+                System.out.printf("%10s, %10s", "FOOD NAME", "IS KETO FRIENDLY");
+                System.out.println();
+                System.out.println(("-----------------------------------------------------------------------------"));
                 for (int i = 0; i < foodList.size(); i++) {
-                    System.out.println(String.format("%30s %30s",
+                    System.out.println(String.format("%10s %10s",
                             foodList.get(i).getName(), foodList.get(i).isKetoFriendly()));
                 }
+                System.out.println("These are all foods.");
                 return 1;
             case 2:
                 // System.out.println("Add Food Function");
