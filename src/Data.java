@@ -55,14 +55,8 @@ public class Data {
         }
         return foodList;
     }
-
-    // DEPRECIATED
-    // Needs to be re-written so it doesn't overwrite previous item.
-    // Currently planning to get array of stored foods & appending
-    // the new food to the array, then saving the array to file again.
-    // Might also want to change file to .db instead. It's binary
-    // anyway it seems...
-    public Food addFood() {
+    
+    public Food createFood() {
 
         String foodName;
         boolean isKetoFriendly;
@@ -78,19 +72,7 @@ public class Data {
             isKetoFriendly = false;
         else
             return null;
-        /*
-        scannerInput = new Scanner(System.in);
-        String userInput = scannerInput.toString().toLowerCase();
 
-        if (userInput == "y" || userInput == "yes")
-            isKetoFriendly = true;
-        else if (userInput == "n" || userInput == "no")
-            isKetoFriendly = false;
-        else {
-            System.out.println("Confusing user Input. ");
-            return null;
-        }
-         */
         return new Food(foodName, isKetoFriendly);
     }
 

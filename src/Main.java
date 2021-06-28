@@ -42,7 +42,7 @@ public class Main {
                 return 1;
             case 2:
                 // System.out.println("Add Food Function");
-                Food newFood = data.addFood();
+                Food newFood = data.createFood();
                 if (newFood != null) data.storeFood(newFood);
                 return 2;
             case 3:
