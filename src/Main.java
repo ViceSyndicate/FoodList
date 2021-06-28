@@ -32,6 +32,8 @@ public class Main {
 
         if(!inputScanner.hasNextInt()) return 10;
 
+        List<Food> foodList;
+
         selection = inputScanner.nextInt();
         switch (selection) {
             case 0: // Exits Program.
@@ -39,13 +41,17 @@ public class Main {
             case 1:
                 System.out.println("Food Menu.");
                 // Call Food Menu Function
-                data.getFoodArrayList();
+                foodList = data.getFoodArrayList();
+                for (int i = 0; i < foodList.size(); i++) {
+                    System.out.println(String.format("%30s %30s",
+                            foodList.get(i).getName(), foodList.get(i).isKetoFriendly()));
+                }
                 return 1;
             case 2:
                 // System.out.println("Add Food Function");
                 Food newFood = data.createFood();
                 if (newFood != null) {
-                    List<Food> foodList = data.getFoodArrayList();
+                    foodList = data.getFoodArrayList();
                     foodList.add(newFood);
                     data.storeFoodArrayList(foodList);
                 }
