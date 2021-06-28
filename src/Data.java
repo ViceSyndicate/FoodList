@@ -13,16 +13,12 @@ public class Data {
 
     String fileName = "FoodStorage.txt";
 
-    public void storeFoodArrayList() {
+    public void storeFoodArrayList(List<Food> foodList) {
         OutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
         try {
             fileOutputStream = new FileOutputStream(fileName);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            // Needs to be filled using getFoodArrayList() and then we append the new item to it.
-            List<Food> foodList = getFoodArrayList();
-            //foodList.add();
 
             for (Food food : foodList) {
                 objectOutputStream.writeObject(food);
@@ -55,7 +51,7 @@ public class Data {
         }
         return foodList;
     }
-    
+
     public Food createFood() {
 
         String foodName;

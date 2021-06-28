@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -43,7 +44,11 @@ public class Main {
             case 2:
                 // System.out.println("Add Food Function");
                 Food newFood = data.createFood();
-                if (newFood != null) data.storeFood(newFood);
+                if (newFood != null) {
+                    List<Food> foodList = data.getFoodArrayList();
+                    foodList.add(newFood);
+                    data.storeFoodArrayList(foodList);
+                }
                 return 2;
             case 3:
                 System.out.println("Delete Food Function");
