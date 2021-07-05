@@ -14,12 +14,10 @@ public class Main {
         // While userchoice != 10
         // Go to menu
 
-        int userChoice = Menu();
 
-        if (Menu() != 10)
-            Menu();
-        else
-            System.out.println("Unexpected Input. Please try again.\n");
+        int userChoice = Menu();
+        while (userChoice != 10)
+            userChoice = Menu();
     }
 
     public static int Menu() {
