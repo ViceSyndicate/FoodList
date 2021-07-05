@@ -10,12 +10,16 @@ public class Main {
         // If it does, we should handle that error in main() and discard the return value.
         // And call the Menu function again.
 
-        int userChoice = Menu();
-        if (userChoice == 10)
-            System.out.println("Unexpected Input. Please try again.\n");
-        else
-            userChoice = Menu();
+        // I think this needs to be re-written.
+        // While userchoice != 10
+        // Go to menu
 
+        int userChoice = Menu();
+
+        if (Menu() != 10)
+            Menu();
+        else
+            System.out.println("Unexpected Input. Please try again.\n");
     }
 
     public static int Menu() {
@@ -37,11 +41,11 @@ public class Main {
         selection = inputScanner.nextInt();
         switch (selection) {
             case 0: // Exits Program.
-                return 0;
+                System.exit(0);
             case 1:
                 System.out.println("Food Menu.");
                 // Call Food Menu Function
-                foodList = data.getFoodArrayList();
+                foodList = data.getFoodList();
                 System.out.println(("-----------------------------------------------------------------------------"));
                 System.out.printf("%10s, %10s", "FOOD NAME", "IS KETO FRIENDLY");
                 System.out.println();
@@ -56,15 +60,19 @@ public class Main {
                 // System.out.println("Add Food Function");
                 Food newFood = data.createFood();
                 if (newFood != null) {
-                    foodList = data.getFoodArrayList();
+                    foodList = data.getFoodList();
                     foodList.add(newFood);
                     data.storeFoodArrayList(foodList);
                 }
-                return 2;
+                return 1;
             case 3:
                 System.out.println("Delete Food Function");
-                // Call Delete Food Function
-                return 3;
+                System.out.print("Enter the name of the food you want to delete: ");
+
+                inputScanner = new Scanner(System.in);
+
+                data.deleteFoodByName(inputScanner.nextLine());
+                return 1;
             default:
                 return 10;
         }

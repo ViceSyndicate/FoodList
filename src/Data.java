@@ -1,7 +1,7 @@
 import java.io.*;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,7 +29,7 @@ public class Data {
         }
     }
 
-    public List<Food> getFoodArrayList() {
+    public List<Food> getFoodList() {
         String fileName = "MyEmptyFile.txt";
         List<Food> foodList = new ArrayList<Food>();
         try {
@@ -71,6 +71,19 @@ public class Data {
 
         return new Food(foodName, isKetoFriendly);
     }
+
+    public void deleteFoodByName(String foodName) {
+        List<Food> foodList = getFoodList();
+
+        for (Food food : foodList) {
+            if (food.getName().toLowerCase().equals(foodName.toLowerCase())) {
+                System.out.println("food = " + food);
+                foodList.remove(food);
+            }
+        }
+
+    }
+    // Below is depreciated.
 
     public void storeFood(Food food) {
         OutputStream ops = null;
