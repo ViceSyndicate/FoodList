@@ -71,13 +71,13 @@ public class Data {
     public void deleteFoodByName(String foodName) {
         List<Food> foodList = getFoodList();
 
-        for (Food food : foodList) {
-            if (food.getName().toLowerCase().equals(foodName.toLowerCase())) {
-                System.out.println("food = " + food);
-                foodList.remove(food);
+        for(int i = 0; i < foodList.size(); i++){
+            if (foodName.toLowerCase().equals(foodList.get(i).getName().toLowerCase())) {
+                System.out.println("Removing: " + foodList.get(i).getName());
+                foodList.remove(i);
             }
         }
-
+        storeFoodArrayList(foodList);
     }
     // Below is depreciated.
 
