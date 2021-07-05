@@ -24,17 +24,17 @@ public class Main {
 
         Data data = new Data();
         int selection;
+        List<Food> foodList;
         Scanner inputScanner = new Scanner(System.in);
 
-        System.out.println("---------------------\n");
+        System.out.println("-----------------------------------------------------------------------------");
         System.out.println("1 - List All Foods");
         System.out.println("2 - Add Food");
         System.out.println("3 - Delete Item?");
         System.out.println("0 - Quit\n");
 
-        if(!inputScanner.hasNextInt()) return 10;
+        if(!inputScanner.hasNextInt()) return 1;
 
-        List<Food> foodList;
 
         selection = inputScanner.nextInt();
         switch (selection) {
@@ -45,11 +45,12 @@ public class Main {
                 // Call Food Menu Function
                 foodList = data.getFoodList();
                 System.out.println(("-----------------------------------------------------------------------------"));
-                System.out.printf("%10s, %10s", "FOOD NAME", "IS KETO FRIENDLY");
+                System.out.printf("%20s", "NAME");
+                System.out.printf("%12s", "KETO");
                 System.out.println();
                 System.out.println(("-----------------------------------------------------------------------------"));
                 for (int i = 0; i < foodList.size(); i++) {
-                    System.out.println(String.format("%10s %10s",
+                    System.out.println(String.format("%20s %11s",
                             foodList.get(i).getName(), foodList.get(i).isKetoFriendly()));
                 }
                 //System.out.println("These are all foods.");
@@ -72,7 +73,7 @@ public class Main {
                 data.deleteFoodByName(inputScanner.nextLine());
                 return 1;
             default:
-                return 10;
+                return 1;
         }
     }
 }
