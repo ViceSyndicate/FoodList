@@ -30,7 +30,6 @@ public class Data {
     }
 
     public List<Food> getFoodList() {
-        String fileName = "MyEmptyFile.txt";
         List<Food> foodList = new ArrayList<Food>();
         try {
             FileInputStream inputFile = new FileInputStream("FoodStorage.txt");
@@ -39,13 +38,10 @@ public class Data {
             while (true) {
                 Food food = (Food) objectInput.readObject();
                 foodList.add(food);
-                // System.out.println(food.getName());
-                // System.out.println(food.isKetoFriendly());
-                System.out.println();
             }
         }
         catch (EOFException eof) {
-            System.out.println("Reached end of file");
+            //System.out.println("Reached end of file");
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }

@@ -52,7 +52,7 @@ public class Main {
                     System.out.println(String.format("%10s %10s",
                             foodList.get(i).getName(), foodList.get(i).isKetoFriendly()));
                 }
-                System.out.println("These are all foods.");
+                //System.out.println("These are all foods.");
                 return 1;
             case 2:
                 // System.out.println("Add Food Function");
