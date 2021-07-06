@@ -32,7 +32,7 @@ public class Data {
     public List<Food> getFoodList() {
         List<Food> foodList = new ArrayList<Food>();
         try {
-            FileInputStream inputFile = new FileInputStream("FoodStorage.txt");
+            FileInputStream inputFile = new FileInputStream(fileName);
             ObjectInputStream objectInput = new ObjectInputStream(inputFile);
 
             while (true) {
@@ -85,7 +85,7 @@ public class Data {
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try {
-            ops = new FileOutputStream("FoodStorage.txt");
+            ops = new FileOutputStream(fileName);
             objOps = new ObjectOutputStream(ops);
             objOps.writeObject(food);
             objOps.flush();
@@ -108,7 +108,7 @@ public class Data {
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         try {
-            fileIs = new FileInputStream("FoodStorage.txt");
+            fileIs = new FileInputStream(fileName);
             objIs = new ObjectInputStream(fileIs);
 
             Food food = (Food) objIs.readObject();
