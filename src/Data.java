@@ -30,12 +30,12 @@ public class Data {
     }
 
     public List<Food> getKetoList(List<Food> foodList) {
-        List<Food> ketoList = foodList;
-        for (int i = 0; i < foodList.size(); i++)
+        for (int i = 0; i < foodList.size();)
         {
             if (foodList.get(i).isKetoFriendly() == false) foodList.remove(i);
+            i++;
         }
-        return  ketoList;
+        return  foodList;
     }
 
     public List<Food> getFoodList() {
