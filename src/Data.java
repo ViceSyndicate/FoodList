@@ -29,6 +29,15 @@ public class Data {
         }
     }
 
+    public List<Food> getKetoList(List<Food> foodList) {
+        List<Food> ketoList = foodList;
+        for (int i = 0; i < foodList.size(); i++)
+        {
+            if (foodList.get(i).isKetoFriendly() == false) foodList.remove(i);
+        }
+        return  ketoList;
+    }
+
     public List<Food> getFoodList() {
         List<Food> foodList = new ArrayList<Food>();
         try {

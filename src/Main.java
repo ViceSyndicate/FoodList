@@ -41,9 +41,16 @@ public class Main {
             case 0: // Exits Program.
                 System.exit(0);
             case 1:
-                System.out.println("Food Menu.");
-                // Call Food Menu Function
                 foodList = data.getFoodList();
+                System.out.println("Keto only? y/n: ");
+
+                Scanner scannerInput = new Scanner(System.in);
+
+                // Clears the list of all non-keto foods
+                if (scannerInput.hasNext("y") || scannerInput.hasNext("yes"))
+                    foodList = data.getKetoList(foodList);
+                else
+
                 System.out.println(("-----------------------------------------------------------------------------"));
                 System.out.printf("%20s", "NAME");
                 System.out.printf("%12s", "KETO");
