@@ -22,7 +22,5 @@ public class Food implements Serializable {
         return name;
     }
 
-    public boolean isKetoFriendly() {
-        return isKetoFriendly;
-    }
+    public boolean isKetoFriendly() { return isKetoFriendly; }
 }
