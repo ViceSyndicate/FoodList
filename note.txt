@@ -1,7 +1,0 @@
-1. Try serealizing and de-serializing.
-https://www.codejava.net/java-se/file-io/java-io-objectinputstream-and-objectoutputstream-examples
-https://youtu.be/HdxQJ_C0kdQ?t=2706
-
-2. Try storing and getting meals using XML
-
-3. Try storing and getting meals using JSON.

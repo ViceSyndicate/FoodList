@@ -53,7 +53,6 @@ public class Data {
             }
         }
         catch (EOFException eof) {
-            //System.out.println("Reached end of file");
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -90,58 +89,5 @@ public class Data {
             }
         }
         storeFoodArrayList(foodList);
-    }
-    // Below is depreciated.
-
-    public void storeFood(Food food) {
-        OutputStream ops = null;
-        ObjectOutputStream objOps = null;
-        try {
-            ops = new FileOutputStream(fileName);
-            objOps = new ObjectOutputStream(ops);
-            objOps.writeObject(food);
-            objOps.flush();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally{
-            try{
-                if(objOps != null) objOps.close();
-            } catch (Exception ex){
-                System.out.println(ex);
-            }
-        }
-
-    }
-
-    public void displayFoods(){
-
-        InputStream fileIs = null;
-        ObjectInputStream objIs = null;
-        try {
-            fileIs = new FileInputStream(fileName);
-            objIs = new ObjectInputStream(fileIs);
-
-            Food food = (Food) objIs.readObject();
-
-
-
-            System.out.println(food.getId());
-            System.out.println(food.getName());
-            System.out.println(food.isKetoFriendly());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if(objIs != null) objIs.close();
-            } catch (Exception ex){
-
-            }
-        }
     }
 }
