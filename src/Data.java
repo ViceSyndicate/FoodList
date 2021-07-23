@@ -29,22 +29,16 @@ public class Data {
         }
     }
 
-    // bug in here...
-    // Something makes it so that normal2 returns true after normal1 returns false.
-    // I believe it's related to removing index0 and then never checking index 2.
-    // Perhaps if we store the index values of all the non keto friendly foods
-    // and then remove them all in one go after the check loop.
     public List<Food> getKetoList(List<Food> foodList) {
-        List<Food> ketoList = new ArrayList<>();
-        ArrayList<int> ketoIndexes = new ArrayList<>();
+
+        ArrayList<Food> ketoFoods = new ArrayList<>();
+
         for (int i = 0; i < foodList.size(); i++)
         {
-            // Add keto indexes to ketoIndexes and make another for loop where we remove all those.
-            if (foodList.get(i).isKetoFriendly() == false)
-
-            // if (foodList.get(i).isKetoFriendly() == false) foodList.remove(i);
+            if (foodList.get(i).isKetoFriendly() == true)
+                ketoFoods.add(foodList.get(i));
         }
-        return  foodList;
+        return  ketoFoods;
     }
 
     public List<Food> getFoodList() {
