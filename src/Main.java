@@ -52,12 +52,12 @@ public class Main {
                 else
 
                 System.out.println(("-----------------------------------------------------------------------------"));
-                System.out.printf("%20s", "NAME");
+                System.out.printf("%33s", "NAME");
                 System.out.printf("%12s", "KETO");
                 System.out.println();
                 System.out.println(("-----------------------------------------------------------------------------"));
                 for (int i = 0; i < foodList.size(); i++) {
-                    System.out.println(String.format("%20s %11s",
+                    System.out.println(String.format("%33s %11s",
                             foodList.get(i).getName(), foodList.get(i).isKetoFriendly()));
                 }
                 //System.out.println("These are all foods.");
