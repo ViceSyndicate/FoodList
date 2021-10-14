@@ -23,6 +23,7 @@ public class Main {
     public static int Menu() {
 
         Data data = new Data();
+        data.storageFileExists();
         int selection;
         List<Food> foodList;
         Scanner inputScanner = new Scanner(System.in);

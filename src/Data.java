@@ -1,9 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -12,6 +10,18 @@ import java.io.OutputStream;
 public class Data {
 
     String fileName = "FoodStorage.txt";
+
+     public void storageFileExists(){
+        File storageFile = new File(fileName);
+        if (!storageFile.exists()) {
+            try {
+                storageFile.createNewFile();
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
+        }
+    }
 
     public void storeFoodArrayList(List<Food> foodList) {
         OutputStream fileOutputStream = null;
@@ -38,7 +48,7 @@ public class Data {
             if (foodList.get(i).isKetoFriendly() == true)
                 ketoFoods.add(foodList.get(i));
         }
-        return  ketoFoods;
+        return ketoFoods;
     }
 
     public List<Food> getFoodList() {
