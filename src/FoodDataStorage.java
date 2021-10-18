@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
 
-public class Data {
+public class FoodDataStorage {
 
     String fileName = "FoodStorage.txt";
 
@@ -24,17 +24,15 @@ public class Data {
     }
 
     public void storeFoodArrayList(List<Food> foodList) {
-        OutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(fileName);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            FileOutputStream fileOutPutStream = new FileOutputStream(fileName);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutPutStream);
 
             for (Food food : foodList) {
                 objectOutputStream.writeObject(food);
             }
         }
-        catch (IOException ex) { // (IOException | ParseException ex)
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -52,7 +50,7 @@ public class Data {
     }
 
     public List<Food> getFoodList() {
-        List<Food> foodList = new ArrayList();
+        ArrayList<Food> foodList = new ArrayList<Food>();
         try {
             FileInputStream inputFile = new FileInputStream(fileName);
             ObjectInputStream objectInput = new ObjectInputStream(inputFile);

@@ -22,8 +22,8 @@ public class Main {
 
     public static int Menu() {
 
-        Data data = new Data();
-        data.storageFileExists();
+        FoodDataStorage foodDataStorage = new FoodDataStorage();
+        foodDataStorage.storageFileExists();
         int selection;
         List<Food> foodList;
         Scanner inputScanner = new Scanner(System.in);
@@ -42,14 +42,14 @@ public class Main {
             case 0: // Exits Program.
                 System.exit(0);
             case 1:
-                foodList = data.getFoodList();
+                foodList = foodDataStorage.getFoodList();
                 System.out.println("Keto only? y/n: ");
 
                 Scanner scannerInput = new Scanner(System.in);
 
                 // Clears the list of all non-keto foods
                 if (scannerInput.hasNext("y") || scannerInput.hasNext("yes"))
-                    foodList = data.getKetoList(foodList);
+                    foodList = foodDataStorage.getKetoList(foodList);
                 else
 
                 System.out.println(("-----------------------------------------------------------------------------"));
@@ -65,11 +65,11 @@ public class Main {
                 return 1;
             case 2:
                 // System.out.println("Add Food Function");
-                Food newFood = data.createFood();
+                Food newFood = foodDataStorage.createFood();
                 if (newFood != null) {
-                    foodList = data.getFoodList();
+                    foodList = foodDataStorage.getFoodList();
                     foodList.add(newFood);
-                    data.storeFoodArrayList(foodList);
+                    foodDataStorage.storeFoodArrayList(foodList);
                 }
                 return 1;
             case 3:
@@ -78,7 +78,7 @@ public class Main {
 
                 inputScanner = new Scanner(System.in);
 
-                data.deleteFoodByName(inputScanner.nextLine());
+                foodDataStorage.deleteFoodByName(inputScanner.nextLine());
                 return 1;
             default:
                 return 1;
